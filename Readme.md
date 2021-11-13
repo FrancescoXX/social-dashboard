@@ -1,9 +1,15 @@
 # Social Dashboard
 
+I am livestreaming this project on Twitch: https://www.twitch.tv/francesco_ciulla
+
+Clone the projects
+```
+git clone https://github.com/FrancescoXX/social-dashboard
+```
+
 A Dashboard to display your social media stats
 
 To deploy it
-
 ```
 docker compose up -d grafana
 ```

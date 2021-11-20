@@ -4,8 +4,8 @@ https://www.twitch.tv/francesco_ciulla
 
 # Social Media integrated:
 
-- GitHub
-- Twitter
+✅ GitHub
+✅ Twitter
 - Instagram
 - LinkedIn
 - YouTube

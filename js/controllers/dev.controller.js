@@ -7,7 +7,6 @@ require('dotenv').config();
 exports.test = async (req, res) => {
   console.log("test");
   try {
-    console.log(process.env);
     res.status(200).json("ok");
   } catch (error) {
     console.log(error);

@@ -6,8 +6,7 @@ require('dotenv').config();
 
 // GitHub
 exports.getGithub = async (req, res) => {
-  const USER = 'avneesh0612'
-  const endpoint = `https://api.github.com/users/${USER}`;
+  const endpoint = `https://api.github.com/users/${process.env.GITHUB_USERNAME}`;
   try {
     const response = await axios.get(endpoint);
     const followersData = response.data.followers;
@@ -28,10 +27,9 @@ exports.getGithub = async (req, res) => {
 exports.getTwitter = async (req, res) => {
   try {
     let data = '';
-    const TWITTER_SCREEN_NAME  = 'avneesh0612'; // your twitter screen name
     const config = {
       method: 'get',
-      url: `https://api.twitter.com/1.1/users/show.json?screen_name=${TWITTER_SCREEN_NAME}`,
+      url: `https://api.twitter.com/1.1/users/show.json?screen_name=${process.env.TWITTER_USERNAME}`,
       headers: {
         Authorization: 'Bearer ' + process.env.TWITTER_API_TOKEN,
         Cookie:
@@ -50,7 +48,7 @@ exports.getTwitter = async (req, res) => {
           followers: followersData,
         });
 
-        return res.status(200).json(followersData);
+        return res.status(201).json(followersData);
       })
       .catch(function (error) {
         console.log(error);

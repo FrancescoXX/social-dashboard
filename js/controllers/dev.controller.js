@@ -1,11 +1,13 @@
 const Socials = require('../models/socials.model');
 const axios = require('axios').default;
 // const sequelize = require('../util/database')
+require('dotenv').config();
 
 //Socials Controller
 exports.test = async (req, res) => {
   console.log("test");
   try {
+    console.log(process.env);
     res.status(200).json("ok");
   } catch (error) {
     console.log(error);

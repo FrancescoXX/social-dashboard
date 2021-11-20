@@ -14,7 +14,9 @@ app.use('/dev', require('./routes/dev.routes'));
 //Official one
 app.use('/socials', require('./routes/socials.routes'));
 
+// app.listen(process.env.EXTERNALPORT || 3000)
+
 sequelize
-  .sync({ force: true })
+  .sync({ force: false })
   .then(() => app.listen(process.env.EXTERNALPORT))
   .catch((error) => console.log(error));

@@ -1,3 +1,13 @@
+# TWITCH LIVESTREAM:
+
+https://www.twitch.tv/francesco_ciulla
+
+# Important:
+add a .env file to yopur root folder with the following content:
+```
+TWITTER_API_KEY=<your api key>
+```
+
 # Social Dashboard
 
 I am livestreaming this project on Twitch: https://www.twitch.tv/francesco_ciulla

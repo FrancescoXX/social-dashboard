@@ -6,7 +6,8 @@ require('dotenv').config();
 
 // GitHub
 exports.getGithub = async (req, res) => {
-  const endpoint = 'https://api.github.com/users/FrancescoXX';
+  const USER = 'avneesh0612'
+  const endpoint = `https://api.github.com/users/${USER}`;
   try {
     const response = await axios.get(endpoint);
     const followersData = response.data.followers;
@@ -27,13 +28,12 @@ exports.getGithub = async (req, res) => {
 exports.getTwitter = async (req, res) => {
   try {
     let data = '';
-    const TWITTER_ID = 1704118916 //user your twitter id https://tweeterid.com/
-
+    const TWITTER_SCREEN_NAME  = 'avneesh0612'; // your twitter screen name
     const config = {
       method: 'get',
-      url: `https://api.twitter.com/1.1/users/show.json?user_id=${TWITTER_ID}`,
+      url: `https://api.twitter.com/1.1/users/show.json?screen_name=${TWITTER_SCREEN_NAME}`,
       headers: {
-        Authorization: 'Bearer '+ process.env.TWITTER_API_TOKEN,
+        Authorization: 'Bearer ' + process.env.TWITTER_API_TOKEN,
         Cookie:
           'guest_id=v1%3A163681632986041456; guest_id_ads=v1%3A163681632986041456; guest_id_marketing=v1%3A163681632986041456; personalization_id="v1_Hn8d76dlArEWlGgvmBl6Kg=="',
       },
@@ -42,24 +42,20 @@ exports.getTwitter = async (req, res) => {
 
     axios(config)
       .then(async function (response) {
-        console.log(JSON.stringify(response.data));
-        
         const followersData = response.data.followers_count;
 
-        const social = await Socials.create({
-          //store the followers count on the db
+        //store the Twitter followers count on the db
+        await Socials.create({
           socialName: 'twitter',
           followers: followersData,
         });
 
-        return res.status(200).json(response.data.followers_count);
-
+        return res.status(200).json(followersData);
       })
       .catch(function (error) {
         console.log(error);
         return res.status(500).json(error);
       });
-    
   } catch (error) {
     console.log(error);
     res.status(500).json(error);
@@ -67,9 +63,38 @@ exports.getTwitter = async (req, res) => {
 };
 
 // Twitch
+// https://api.twitch.tv/kraken/channels/44322889/follows?client_id=<your client id>&api_version=5
 exports.getTwitch = async (req, res) => {
   try {
-    res.status(200).json('getTwitch');
+    let data = '';
+
+    const config = {
+      method: 'get',
+      url: `https://api.twitch.tv/kraken/channels/44322889/follows?client_id=<your client id>&api_version=5`,
+      headers: {
+        Authorization: 'Bearer ' + process.env.TWITCH_API_TOKEN,
+        // Cookie:
+          // 'guest_id=v1%3A163681632986041456; guest_id_ads=v1%3A163681632986041456; guest_id_marketing=v1%3A163681632986041456; personalization_id="v1_Hn8d76dlArEWlGgvmBl6Kg=="',
+      },
+      data: data,
+    };
+
+    axios(config)
+      .then(async function (response) {
+        const followersData = response.data.followers_count;
+
+        //store the Twitter followers count on the db
+        await Socials.create({
+          socialName: 'twitch',
+          followers: followersData,
+        });
+
+        return res.status(200).json(followersData);
+      })
+      .catch(function (error) {
+        console.log(error);
+        return res.status(500).json(error);
+      });
   } catch (error) {
     console.log(error);
     res.status(500).json(error);

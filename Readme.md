@@ -2,6 +2,15 @@
 
 https://www.twitch.tv/francesco_ciulla
 
+# Social Media integrated:
+
+- GitHub
+- Twitter
+- Instagram
+- LinkedIn
+- YouTube
+- Twitch
+
 # Important:
 add a .env file to yopur root folder with the following content:
 ```

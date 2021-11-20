@@ -15,32 +15,94 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 1,
+  "id": 3,
   "links": [],
   "panels": [
     {
-      "collapsed": false,
+      "columns": [],
+      "datasource": "PostgreSQL",
+      "fontSize": "100%",
       "gridPos": {
-        "h": 1,
+        "h": 5,
         "w": 24,
         "x": 0,
         "y": 0
       },
       "id": 12,
-      "panels": [],
-      "title": "Row title",
-      "type": "row"
+      "links": [],
+      "pageSize": null,
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 3,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "date"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "format": "table",
+          "group": [],
+          "hide": true,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT `id` from socials;",
+          "refId": "A",
+          "scenarioId": "random_walk",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Panel Title",
+      "transform": "table",
+      "type": "table"
     },
     {
       "cacheTimeout": null,
       "colorBackground": true,
-      "colorPrefix": false,
       "colorValue": false,
       "colors": [
-        "#0a50a1",
-        "#0a50a1",
-        "#0a50a1"
+        "#7eb26d",
+        "#7eb26d",
+        "#7eb26d"
       ],
+      "datasource": "PostgreSQL",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -50,10 +112,118 @@
         "thresholdMarkers": true
       },
       "gridPos": {
-        "h": 4,
-        "w": 3,
+        "h": 3,
+        "w": 4,
         "x": 0,
-        "y": 1
+        "y": 5
+      },
+      "id": 2,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  \"createdAt\" AS \"time\",\n  followers\nFROM socials\nWHERE\n  \"socialName\" = 'github'\nORDER BY 1",
+          "refId": "A",
+          "scenarioId": "random_walk",
+          "select": [
+            [
+              {
+                "params": [
+                  "followers"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "socials",
+          "timeColumn": "\"createdAt\"",
+          "timeColumnType": "timestamptz",
+          "where": [
+            {
+              "datatype": "varchar",
+              "name": "",
+              "params": [
+                "\"socialName\"",
+                "=",
+                "'github'"
+              ],
+              "type": "expression"
+            }
+          ]
+        }
+      ],
+      "thresholds": "",
+      "title": "GitHub Followers",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorValue": false,
+      "colors": [
+        "#5195ce",
+        "#5195ce",
+        "#5195ce"
+      ],
+      "datasource": "PostgreSQL",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 4,
+        "y": 5
       },
       "id": 4,
       "interval": null,
@@ -89,96 +259,46 @@
         "lineColor": "rgb(31, 120, 193)",
         "show": false
       },
-      "tableColumn": "Time",
-      "targets": [
-        {
-          "refId": "A",
-          "scenarioId": "random_walk",
-          "stringInput": ""
-        }
-      ],
-      "thresholds": "",
-      "title": "Twitter",
-      "transparent": false,
-      "type": "singlestat",
-      "valueFontSize": "150%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": true,
-      "colorValue": false,
-      "colors": [
-        "#bf1b00",
-        "#bf1b00",
-        "#bf1b00"
-      ],
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 3,
-        "x": 3,
-        "y": 1
-      },
-      "id": 14,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": true,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
-      },
       "tableColumn": "",
       "targets": [
         {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  \"createdAt\" AS \"time\",\n  followers\nFROM socials\nWHERE\n  \"socialName\" = 'twitter'\nORDER BY 1",
           "refId": "A",
-          "scenarioId": "random_walk"
+          "select": [
+            [
+              {
+                "params": [
+                  "followers"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "socials",
+          "timeColumn": "\"createdAt\"",
+          "timeColumnType": "timestamptz",
+          "where": [
+            {
+              "datatype": "varchar",
+              "name": "",
+              "params": [
+                "\"socialName\"",
+                "=",
+                "'twitter'"
+              ],
+              "type": "expression"
+            }
+          ]
         }
       ],
       "thresholds": "",
-      "title": "YouTube",
+      "title": "Twitter Followers",
       "type": "singlestat",
-      "valueFontSize": "150%",
+      "valueFontSize": "80%",
       "valueMaps": [
         {
           "op": "=",
@@ -193,10 +313,11 @@
       "colorBackground": true,
       "colorValue": false,
       "colors": [
-        "#ba43a9",
-        "#ba43a9",
-        "#ba43a9"
+        "#99440a",
+        "#99440a",
+        "#99440a"
       ],
+      "datasource": "PostgreSQL",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -206,12 +327,12 @@
         "thresholdMarkers": true
       },
       "gridPos": {
-        "h": 4,
-        "w": 3,
-        "x": 6,
-        "y": 1
+        "h": 3,
+        "w": 4,
+        "x": 8,
+        "y": 5
       },
-      "id": 16,
+      "id": 9,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -248,14 +369,43 @@
       "tableColumn": "",
       "targets": [
         {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  \"createdAt\" AS \"time\",\n  followers\nFROM socials\nWHERE\n  \"socialName\" = 'instagram'\nORDER BY 1",
           "refId": "A",
-          "scenarioId": "random_walk"
+          "select": [
+            [
+              {
+                "params": [
+                  "followers"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "socials",
+          "timeColumn": "\"createdAt\"",
+          "timeColumnType": "timestamptz",
+          "where": [
+            {
+              "datatype": "varchar",
+              "name": "",
+              "params": [
+                "\"socialName\"",
+                "=",
+                "'instagram'"
+              ],
+              "type": "expression"
+            }
+          ]
         }
       ],
       "thresholds": "",
-      "title": "Instagram",
+      "title": "Instagram Followers",
       "type": "singlestat",
-      "valueFontSize": "150%",
+      "valueFontSize": "80%",
       "valueMaps": [
         {
           "op": "=",
@@ -268,12 +418,14 @@
     {
       "cacheTimeout": null,
       "colorBackground": true,
+      "colorPrefix": false,
       "colorValue": false,
       "colors": [
         "#052b51",
         "#052b51",
         "#052b51"
       ],
+      "datasource": "PostgreSQL",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -283,12 +435,12 @@
         "thresholdMarkers": true
       },
       "gridPos": {
-        "h": 4,
-        "w": 3,
-        "x": 9,
-        "y": 1
+        "h": 3,
+        "w": 4,
+        "x": 12,
+        "y": 5
       },
-      "id": 18,
+      "id": 10,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -319,20 +471,50 @@
       "sparkline": {
         "fillColor": "rgba(31, 118, 189, 0.18)",
         "full": false,
-        "lineColor": "#890f02",
+        "lineColor": "rgb(31, 120, 193)",
         "show": false
       },
       "tableColumn": "",
       "targets": [
         {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "\"socialName\"",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  \"createdAt\" AS \"time\",\n  \"socialName\" AS metric,\n  followers\nFROM socials\nWHERE\n  \"socialName\" = 'linkedin'\nORDER BY 1,2",
           "refId": "A",
-          "scenarioId": "random_walk"
+          "scenarioId": "random_walk",
+          "select": [
+            [
+              {
+                "params": [
+                  "followers"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "socials",
+          "timeColumn": "\"createdAt\"",
+          "timeColumnType": "timestamptz",
+          "where": [
+            {
+              "datatype": "varchar",
+              "name": "",
+              "params": [
+                "\"socialName\"",
+                "=",
+                "'linkedin'"
+              ],
+              "type": "expression"
+            }
+          ]
         }
       ],
       "thresholds": "",
-      "title": "LInkedin",
+      "title": "Linkedin Followers",
       "type": "singlestat",
-      "valueFontSize": "150%",
+      "valueFontSize": "80%",
       "valueMaps": [
         {
           "op": "=",
@@ -352,6 +534,7 @@
         "#3f2b5b",
         "#3f2b5b"
       ],
+      "datasource": "PostgreSQL",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -361,12 +544,12 @@
         "thresholdMarkers": true
       },
       "gridPos": {
-        "h": 4,
-        "w": 3,
-        "x": 12,
-        "y": 1
+        "h": 3,
+        "w": 4,
+        "x": 16,
+        "y": 5
       },
-      "id": 20,
+      "id": 6,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -403,14 +586,44 @@
       "tableColumn": "",
       "targets": [
         {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "\"socialName\"",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  \"createdAt\" AS \"time\",\n  \"socialName\" AS metric,\n  followers\nFROM socials\nWHERE\n  \"socialName\" = 'twitch'\nORDER BY 1,2",
           "refId": "A",
-          "scenarioId": "random_walk"
+          "scenarioId": "random_walk",
+          "select": [
+            [
+              {
+                "params": [
+                  "followers"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "socials",
+          "timeColumn": "\"createdAt\"",
+          "timeColumnType": "timestamptz",
+          "where": [
+            {
+              "datatype": "varchar",
+              "name": "",
+              "params": [
+                "\"socialName\"",
+                "=",
+                "'twitch'"
+              ],
+              "type": "expression"
+            }
+          ]
         }
       ],
       "thresholds": "",
-      "title": "Twitch",
+      "title": "Twitch Followers",
       "type": "singlestat",
-      "valueFontSize": "150%",
+      "valueFontSize": "80%",
       "valueMaps": [
         {
           "op": "=",
@@ -425,11 +638,12 @@
       "colorBackground": true,
       "colorValue": false,
       "colors": [
-        "#299c46",
-        "#c15c17",
-        "#d44a3a"
+        "#890f02",
+        "#890f02",
+        "#890f02"
       ],
-      "format": "percent",
+      "datasource": "PostgreSQL",
+      "format": "none",
       "gauge": {
         "maxValue": 100,
         "minValue": 0,
@@ -438,12 +652,12 @@
         "thresholdMarkers": true
       },
       "gridPos": {
-        "h": 4,
-        "w": 3,
-        "x": 15,
-        "y": 1
+        "h": 3,
+        "w": 4,
+        "x": 20,
+        "y": 5
       },
-      "id": 22,
+      "id": 8,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -480,14 +694,44 @@
       "tableColumn": "",
       "targets": [
         {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  \"createdAt\" AS \"time\",\n  followers\nFROM socials\nWHERE\n  \"socialName\" = 'youtube'\nORDER BY 1",
           "refId": "A",
-          "scenarioId": "random_walk"
+          "scenarioId": "random_walk",
+          "select": [
+            [
+              {
+                "params": [
+                  "followers"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "socials",
+          "timeColumn": "\"createdAt\"",
+          "timeColumnType": "timestamptz",
+          "where": [
+            {
+              "datatype": "varchar",
+              "name": "",
+              "params": [
+                "\"socialName\"",
+                "=",
+                "'youtube'"
+              ],
+              "type": "expression"
+            }
+          ]
         }
       ],
       "thresholds": "",
-      "title": "Panel Title",
+      "title": "YouTube Subscribers",
       "type": "singlestat",
-      "valueFontSize": "150%",
+      "valueFontSize": "80%",
       "valueMaps": [
         {
           "op": "=",
@@ -495,187 +739,7 @@
           "value": "null"
         }
       ],
-      "valueName": "first"
-    },
-    {
-      "cards": {
-        "cardPadding": null,
-        "cardRound": null
-      },
-      "color": {
-        "cardColor": "#b4ff00",
-        "colorScale": "sqrt",
-        "colorScheme": "interpolatePurples",
-        "exponent": 0.5,
-        "mode": "spectrum"
-      },
-      "dataFormat": "timeseries",
-      "gridPos": {
-        "h": 10,
-        "w": 9,
-        "x": 0,
-        "y": 5
-      },
-      "heatmap": {},
-      "highlightCards": true,
-      "id": 10,
-      "legend": {
-        "show": false
-      },
-      "links": [],
-      "targets": [
-        {
-          "refId": "A",
-          "scenarioId": "random_walk"
-        }
-      ],
-      "title": "Heatmap",
-      "tooltip": {
-        "show": true,
-        "showHistogram": false
-      },
-      "type": "heatmap",
-      "xAxis": {
-        "show": true
-      },
-      "xBucketNumber": null,
-      "xBucketSize": null,
-      "yAxis": {
-        "decimals": null,
-        "format": "currencyNOK",
-        "logBase": 1,
-        "max": null,
-        "min": null,
-        "show": true,
-        "splitFactor": null
-      },
-      "yBucketBound": "auto",
-      "yBucketNumber": null,
-      "yBucketSize": null
-    },
-    {
-      "alert": {
-        "conditions": [
-          {
-            "evaluator": {
-              "params": [
-                null
-              ],
-              "type": "gt"
-            },
-            "operator": {
-              "type": "and"
-            },
-            "query": {
-              "params": [
-                "A",
-                "5m",
-                "now"
-              ]
-            },
-            "reducer": {
-              "params": [],
-              "type": "avg"
-            },
-            "type": "query"
-          }
-        ],
-        "executionErrorState": "alerting",
-        "for": "5m",
-        "frequency": "1m",
-        "handler": 1,
-        "name": "Panel Title alert",
-        "noDataState": "no_data",
-        "notifications": []
-      },
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 1,
-      "gridPos": {
-        "h": 10,
-        "w": 9,
-        "x": 9,
-        "y": 5
-      },
-      "id": 2,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "refId": "A",
-          "scenarioId": "exponential_heatmap_bucket_data",
-          "stringInput": ""
-        }
-      ],
-      "thresholds": [
-        {
-          "colorMode": "critical",
-          "fill": true,
-          "line": true,
-          "op": "gt",
-          "value": null
-        }
-      ],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Data",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "valueName": "avg"
     }
   ],
   "schemaVersion": 16,
@@ -714,7 +778,7 @@
     ]
   },
   "timezone": "",
-  "title": "New dashboard Copy",
-  "uid": "DPKwujF7z",
-  "version": 2
+  "title": "Dashboard1",
+  "uid": "CEA1Lo5nk",
+  "version": 15
 }

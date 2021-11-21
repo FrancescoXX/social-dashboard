@@ -12,7 +12,7 @@ https://www.twitch.tv/francesco_ciulla
 - Twitch
 
 # Important:
-add a .env file to yopur root folder with the following content:
+add a .env file in `js` folder with the following content:
 ```
 TWITTER_API_TOKEN=<your api bearer token>
 ```

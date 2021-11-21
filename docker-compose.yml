@@ -12,7 +12,7 @@ services:
 
   nodeapp:
     container_name: nodeapp
-    image: francescoxx/social-dashboard:nodeapp-0.0.1
+    image: social-dashboard:nodeapp-0.0.1
     build:
       context: js
     ports:
@@ -23,8 +23,8 @@ services:
       - PGUSER=postgres
       - PGPASSWORD=postgres
       - PGHOST=db
-      - GITHUB_USERNAME=FrancescoXX # your github username
-      - TWITTER_USERNAME=FrancescoCiull4 # your twitter username 
+      - GITHUB_USERNAME=avneesh0612 # your github username
+      - TWITTER_USERNAME=avneesh0612 # your twitter username 
 
   db:
     container_name: db

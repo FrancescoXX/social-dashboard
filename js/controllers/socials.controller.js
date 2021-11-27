@@ -1,6 +1,5 @@
 const Socials = require('../models/socials.model');
 const axios = require('axios').default;
-require('dotenv').config();
 
 //import the authentication for all the social media
 
@@ -72,7 +71,7 @@ exports.getTwitch = async (req, res) => {
       headers: {
         Authorization: 'Bearer ' + process.env.TWITCH_API_TOKEN,
         // Cookie:
-          // 'guest_id=v1%3A163681632986041456; guest_id_ads=v1%3A163681632986041456; guest_id_marketing=v1%3A163681632986041456; personalization_id="v1_Hn8d76dlArEWlGgvmBl6Kg=="',
+        // 'guest_id=v1%3A163681632986041456; guest_id_ads=v1%3A163681632986041456; guest_id_marketing=v1%3A163681632986041456; personalization_id="v1_Hn8d76dlArEWlGgvmBl6Kg=="',
       },
       data: data,
     };
@@ -101,28 +100,118 @@ exports.getTwitch = async (req, res) => {
 
 // Youtube
 exports.getYoutube = async (req, res) => {
-  try {
-    res.status(200).json('getYouTube');
-  } catch (error) {
-    console.log(error);
-    res.status(500).json(error);
-  }
+  
 };
 
 // Instagram
 exports.getInstagram = async (req, res) => {
-  try {
-    res.status(200).json('getInstagram');
-  } catch (error) {
-    console.log(error);
-    res.status(500).json(error);
-  }
+  // const user = 'FrancescoCiulla';
+  // const fetchHashnodeFollowers = async (user) => {
+  const user = 'FrancescoCiulla';
+  const result = await fetch('https://api.hashnode.com/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      query: `
+        query GetFollowers($user: String!) {
+          user(username: $user) {
+            numFollowers
+          }
+        }
+          `,
+      variables: {
+        user,
+      },
+    }),
+  });
+  const body = await result.json();
+  console.log(body);
+  return res.status(200).json(body);
 };
 
 // Linkedin
 exports.getLinkedin = async (req, res) => {
   try {
-    res.status(200).json('getLinkedin');
+    const user = 'FrancescoCiulla';
+    let data = JSON.stringify({
+      query: `query GetFollowers($user: String!) {user(username: $user) {numFollowers}}`,
+      variables: {
+        user,
+      },
+    });
+
+    const config = {
+      method: 'POST',
+      url: 'https://api.hashnode.com/',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data: data,
+    };
+
+    axios(config)
+      .then(async function (response) {
+        console.log(response.data);
+
+        const followersData = response.data.data.user.numFollowers;
+
+        //store the Twitter followers count on the db
+        await Socials.create({
+          socialName: 'hashnode',
+          followers: followersData,
+        });
+
+        return res.status(201).json(followersData);
+      })
+      .catch(function (error) {
+        console.log(error);
+        return res.status(500).json(error);
+      });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
+};
+// Hashnode
+exports.getHashnode = async (req, res) => {
+  try {
+    const user = 'FrancescoCiulla';
+    let data = JSON.stringify({
+      query: `query GetFollowers($user: String!) {user(username: $user) {numFollowers}}`,
+      variables: {
+        user,
+      },
+    });
+
+    const config = {
+      method: 'POST',
+      url: 'https://api.hashnode.com/',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data: data,
+    };
+
+    axios(config)
+      .then(async function (response) {
+        console.log(response.data);
+
+        const followersData = response.data.data.user.numFollowers;
+
+        //store the Twitter followers count on the db
+        await Socials.create({
+          socialName: 'hashnode',
+          followers: followersData,
+        });
+
+        return res.status(201).json(followersData);
+      })
+      .catch(function (error) {
+        console.log(error);
+        return res.status(500).json(error);
+      });
   } catch (error) {
     console.log(error);
     res.status(500).json(error);

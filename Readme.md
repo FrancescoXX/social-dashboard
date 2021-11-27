@@ -4,12 +4,47 @@ https://www.twitch.tv/francesco_ciulla
 
 # Social Media integrated:
 
-✅ GitHub
-✅ Twitter
+- GitHub ✅
+-  Twitter ✅
 - Instagram
 - LinkedIn
 - YouTube
 - Twitch
+
+
+# Procedure:
+clone the project from GitHub:
+```
+git clone https://github.com/FrancescoXX/social-dashboard.git 
+```
+
+run db
+```
+docker compose up -d db
+```
+
+run grafana
+```
+docker compose up -d grafana
+```
+
+build and run nodeapp
+```
+docker compose up --build nodeapp
+```
+
+```
+visit http://localhost:3000/
+```
+
+log with admin/admin
+
+- import Grafana dashboard from json
+- set Postgres as datasource for Grafana dashboard (see Grafana datasources)
+- set Grafana dashboard as default dashboard
+```
+
+```
 
 # Important:
 add a .env file to yopur root folder with the following content:

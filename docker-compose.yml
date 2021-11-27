@@ -23,8 +23,10 @@ services:
       - PGUSER=postgres
       - PGPASSWORD=postgres
       - PGHOST=db
-      - GITHUB_USERNAME=FrancescoXX # your github username
-      - TWITTER_USERNAME=FrancescoCiull4 # your twitter username 
+      - GITHUB_USERNAME=saminacodes # your github username
+      - TWITTER_USERNAME=saminacodes # your twitter username
+    env_file:
+      - .env 
 
   db:
     container_name: db

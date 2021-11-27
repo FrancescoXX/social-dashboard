@@ -28,6 +28,7 @@ services:
       - HASHNODE_USERNAME=FrancescoCiulla
       - INSTAGRAM_USERNAME=francescociullaroma
       - YOUTUBE_CHANNEL_ID=UCBRxDSTfr2aJVODDh4WG_7g
+      - TWITCH_USER_ID=467501393
     env_file:
       - .env 
 

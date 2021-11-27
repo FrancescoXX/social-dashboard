@@ -1,20 +1,19 @@
 const Socials = require('../models/socials.model');
 const axios = require('axios').default;
 
-//import the authentication for all the social media
-
 // GitHub
 exports.getGithub = async (req, res) => {
   const endpoint = `https://api.github.com/users/${process.env.GITHUB_USERNAME}`;
   try {
     const response = await axios.get(endpoint);
+    
+    //store the GitHub followers count on the db
     const followersData = response.data.followers;
-
-    //store the followers count on the db
     const social = await Socials.create({
       socialName: 'github',
       followers: followersData,
     });
+
     return res.status(201).json(social);
   } catch (error) {
     console.error(error);
@@ -31,8 +30,6 @@ exports.getTwitter = async (req, res) => {
       url: `https://api.twitter.com/1.1/users/show.json?screen_name=${process.env.TWITTER_USERNAME}`,
       headers: {
         Authorization: 'Bearer ' + process.env.TWITTER_API_TOKEN,
-        Cookie:
-          'guest_id=v1%3A163681632986041456; guest_id_ads=v1%3A163681632986041456; guest_id_marketing=v1%3A163681632986041456; personalization_id="v1_Hn8d76dlArEWlGgvmBl6Kg=="',
       },
       data: data,
     };
@@ -60,32 +57,33 @@ exports.getTwitter = async (req, res) => {
 };
 
 // Twitch
-// https://api.twitch.tv/kraken/channels/44322889/follows?client_id=<your client id>&api_version=5
-// https://api.twitch.tv/helix/users/follows?to_id=23161357
 exports.getTwitch = async (req, res) => {
   try {
     let data = '';
 
     const config = {
       method: 'get',
-      url: `https://api.twitch.tv/helix/users/follows?to_id=23161357`,
+      url: `https://api.twitch.tv/helix/users/follows?to_id=${process.env.TWITCH_USER_ID}`,
       headers: {
         'Authorization': 'Bearer ' + process.env.TWITCH_API_TOKEN,
-        'Client-Id': '12345',
+        'Client-Id': process.env.TWITCH_CLIENT_ID,
       },
       data: data,
     };
 
     axios(config)
       .then(async function (response) {
-        //store the Twitter followers count on the db
-        const followersData = response.data.followers_count;
+        const responseData = response.data;
+        
+        
+        // store the Twitch followers count on the db
+        const followersData = response.data.total;
         await Socials.create({
           socialName: 'twitch',
           followers: followersData,
         });
 
-        return res.status(200).json(followersData);
+        return res.status(200).json(responseData);
       })
       .catch(function (error) {
         console.log(error);
@@ -134,7 +132,6 @@ exports.getYoutube = async (req, res) => {
   }
 };
 
-
 // Hashnode
 exports.getHashnode = async (req, res) => {
   try {
@@ -176,7 +173,6 @@ exports.getHashnode = async (req, res) => {
 };
 
 // Instagram
-// https://www.instagram.com/francescociullaroma/?__a=1
 exports.getInstagram = async (req, res) => {
   try {
     let data = '';
@@ -210,9 +206,4 @@ exports.getInstagram = async (req, res) => {
     console.log(error);
     res.status(500).json(error);
   }
-};
-
-// Linkedin
-exports.getLinkedin = async (req, res) => {
-
 };

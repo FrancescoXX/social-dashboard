@@ -4,8 +4,9 @@ https://www.twitch.tv/francesco_ciulla
 
 # Social Media integrated:
 
-- GitHub ✅
--  Twitter ✅
+- ✅ GitHub
+- ✅ Twitter
+- ✅ Hashnode
 - Instagram
 - LinkedIn
 - YouTube
@@ -47,9 +48,9 @@ log with admin/admin
 ```
 
 # Important:
-add a .env file to yopur root folder with the following content:
+add a .env file in `js` folder with the following content:
 ```
-TWITTER_API_KEY=<your api key>
+TWITTER_API_TOKEN=<your api bearer token>
 ```
 
 # Social Dashboard

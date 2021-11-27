@@ -12,7 +12,7 @@ services:
 
   nodeapp:
     container_name: nodeapp
-    image: francescoxx/social-dashboard:nodeapp-0.0.1
+    image: social-dashboard:nodeapp-0.0.1
     build:
       context: js
     ports:
@@ -27,6 +27,7 @@ services:
       - TWITTER_USERNAME=saminacodes # your twitter username
     env_file:
       - .env 
+
 
   db:
     container_name: db

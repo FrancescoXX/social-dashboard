@@ -7,9 +7,9 @@ https://www.twitch.tv/francesco_ciulla
 - ✅ GitHub
 - ✅ Twitter
 - ✅ Hashnode
-- ✅Instagram
-- ✅YouTube
-- ✅Twitch
+- ✅ Instagram
+- ✅ YouTube
+- ✅ Twitch
 
 
 # Procedure:
@@ -51,6 +51,8 @@ add a .env file in the root folder with the following content, copying the conte
 ```
 TWITTER_API_TOKEN=<your twitter api token>
 YOUTUBE_API_TOKEN=<your youtube api token>
+TWITCH_API_TOKEN=<your twitch api token>
+TWITCH_CLIENT_ID=<your twitch client id>
 ```
 
 # Social Dashboard

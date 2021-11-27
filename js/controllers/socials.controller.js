@@ -61,24 +61,6 @@ exports.getTwitch = async (req, res) => {
   
   // CURL TO GET YOUR TWITCH TOKEN
   // curl --location --request POST 'https://id.twitch.tv/oauth2/token?client_id=XXXXXXXXX&client_secret=XXXXXXXXX&grant_type=client_credentials'
-
-
-  // AXIOS REQUEST TO GET YOUR TWITCH TOKEN
-  // Replace client_id and client_secret with your own
-  // var config = {
-  //   method: 'post',
-  //   url: 'https://id.twitch.tv/oauth2/token?client_id=XXXXXXXXXXXX&client_secret=XXXXXXXXX&grant_type=client_credentials',
-  //   headers: { 
-  //     'Cookie': 'server_session_id=d85eadfeb9e64561a99ed506f2d74cad; twitch.lohp.countryCode=IT; unique_id=klaZxEpBPdR27axCkbLkS2nTeha46kdw; unique_id_durable=klaZxEpBPdR27axCkbLkS2nTeha46kdw'
-  //   }
-  // };
-  // axios(config)
-  // .then(function (response) {
-  //   console.log(JSON.stringify(response.data));
-  // })
-  // .catch(function (error) {
-  //   console.log(error);
-  // });
   
   try {
     let data = '';

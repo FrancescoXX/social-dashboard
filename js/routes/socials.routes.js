@@ -9,7 +9,6 @@ router.get('/twitter', controller.getTwitter);
 router.get('/twitch', controller.getTwitch);
 router.get('/youtube', controller.getYoutube);
 router.get('/instagram', controller.getInstagram);
-router.get('/linkedin', controller.getLinkedin);
 router.get('/hashnode', controller.getHashnode);
 
 module.exports = router;

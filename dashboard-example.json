@@ -15,92 +15,17 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 3,
+  "id": 1,
   "links": [],
   "panels": [
-    {
-      "columns": [],
-      "datasource": "PostgreSQL",
-      "fontSize": "100%",
-      "gridPos": {
-        "h": 5,
-        "w": 24,
-        "x": 0,
-        "y": 0
-      },
-      "id": 12,
-      "links": [],
-      "pageSize": null,
-      "scroll": true,
-      "showHeader": true,
-      "sort": {
-        "col": 3,
-        "desc": true
-      },
-      "styles": [
-        {
-          "alias": "Time",
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "pattern": "Time",
-          "type": "date"
-        },
-        {
-          "alias": "",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "decimals": 2,
-          "pattern": "/.*/",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        }
-      ],
-      "targets": [
-        {
-          "format": "table",
-          "group": [],
-          "hide": true,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT `id` from socials;",
-          "refId": "A",
-          "scenarioId": "random_walk",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "column"
-              }
-            ]
-          ],
-          "timeColumn": "time",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        }
-      ],
-      "title": "Panel Title",
-      "transform": "table",
-      "type": "table"
-    },
     {
       "cacheTimeout": null,
       "colorBackground": true,
       "colorValue": false,
       "colors": [
-        "#7eb26d",
-        "#7eb26d",
-        "#7eb26d"
+        "#171515",
+        "#171515",
+        "#171515"
       ],
       "datasource": "PostgreSQL",
       "format": "none",
@@ -110,12 +35,6 @@
         "show": false,
         "thresholdLabels": false,
         "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 4,
-        "x": 0,
-        "y": 5
       },
       "id": 2,
       "interval": null,
@@ -206,9 +125,9 @@
       "colorBackground": true,
       "colorValue": false,
       "colors": [
-        "#5195ce",
-        "#5195ce",
-        "#5195ce"
+        "#55ACEE",
+        "#55ACEE",
+        "#55ACEE"
       ],
       "datasource": "PostgreSQL",
       "format": "none",
@@ -221,9 +140,9 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 4,
-        "x": 4,
-        "y": 5
+        "w": 6,
+        "x": 6,
+        "y": 0
       },
       "id": 4,
       "interval": null,
@@ -313,9 +232,9 @@
       "colorBackground": true,
       "colorValue": false,
       "colors": [
-        "#99440a",
-        "#99440a",
-        "#99440a"
+        "#ba43a9",
+        "#ba43a9",
+        "#ba43a9"
       ],
       "datasource": "PostgreSQL",
       "format": "none",
@@ -328,9 +247,9 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 4,
-        "x": 8,
-        "y": 5
+        "w": 6,
+        "x": 12,
+        "y": 0
       },
       "id": 9,
       "interval": null,
@@ -421,9 +340,9 @@
       "colorPrefix": false,
       "colorValue": false,
       "colors": [
-        "#052b51",
-        "#052b51",
-        "#052b51"
+        "#275df2",
+        "#275df2",
+        "#275df2"
       ],
       "datasource": "PostgreSQL",
       "format": "none",
@@ -436,9 +355,9 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 4,
-        "x": 12,
-        "y": 5
+        "w": 6,
+        "x": 0,
+        "y": 3
       },
       "id": 10,
       "interval": null,
@@ -481,7 +400,7 @@
           "group": [],
           "metricColumn": "\"socialName\"",
           "rawQuery": false,
-          "rawSql": "SELECT\n  \"createdAt\" AS \"time\",\n  \"socialName\" AS metric,\n  followers\nFROM socials\nWHERE\n  \"socialName\" = 'linkedin'\nORDER BY 1,2",
+          "rawSql": "SELECT\n  \"createdAt\" AS \"time\",\n  \"socialName\" AS metric,\n  followers\nFROM socials\nWHERE\n  \"socialName\" = 'hashnode'\nORDER BY 1,2",
           "refId": "A",
           "scenarioId": "random_walk",
           "select": [
@@ -504,7 +423,7 @@
               "params": [
                 "\"socialName\"",
                 "=",
-                "'linkedin'"
+                "'hashnode'"
               ],
               "type": "expression"
             }
@@ -512,7 +431,7 @@
         }
       ],
       "thresholds": "",
-      "title": "Linkedin Followers",
+      "title": "Hashnode Followers",
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
@@ -530,9 +449,9 @@
       "colorPrefix": false,
       "colorValue": false,
       "colors": [
-        "#3f2b5b",
-        "#3f2b5b",
-        "#3f2b5b"
+        "#8a43f2",
+        "#8a43f2",
+        "#8a43f2"
       ],
       "datasource": "PostgreSQL",
       "format": "none",
@@ -545,9 +464,9 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 4,
-        "x": 16,
-        "y": 5
+        "w": 6,
+        "x": 6,
+        "y": 3
       },
       "id": 6,
       "interval": null,
@@ -638,9 +557,9 @@
       "colorBackground": true,
       "colorValue": false,
       "colors": [
-        "#890f02",
-        "#890f02",
-        "#890f02"
+        "#f20000",
+        "#f20000",
+        "#f20000"
       ],
       "datasource": "PostgreSQL",
       "format": "none",
@@ -653,9 +572,9 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 4,
-        "x": 20,
-        "y": 5
+        "w": 6,
+        "x": 12,
+        "y": 3
       },
       "id": 8,
       "interval": null,
@@ -780,5 +699,5 @@
   "timezone": "",
   "title": "Dashboard1",
   "uid": "CEA1Lo5nk",
-  "version": 15
+  "version": 11
 }

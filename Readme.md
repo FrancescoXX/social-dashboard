@@ -7,10 +7,9 @@ https://www.twitch.tv/francesco_ciulla
 - ✅ GitHub
 - ✅ Twitter
 - ✅ Hashnode
-- Instagram
-- LinkedIn
-- YouTube
-- Twitch
+- ✅Instagram
+- ✅YouTube
+- ✅Twitch
 
 
 # Procedure:

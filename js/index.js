@@ -16,6 +16,6 @@ app.use('/socials', require('./routes/socials.routes'));
 
 
 sequelize
-  .sync({ force: false })
+  .sync({ force: true })
   .then(() => app.listen(process.env.EXTERNALPORT))
   .catch((error) => console.log(error));

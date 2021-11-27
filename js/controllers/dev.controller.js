@@ -92,16 +92,16 @@ exports.getYoutube = async (req, res) => {
   }
 }
 
-// Instagram
-exports.getInstagram = async (req, res) => {
-  const endpoint = 'https://api.github.com/users/suhailkakar'; //Mocking with gh api
+// Hashnode
+exports.getLinkedin = async (req, res) => {
+  const endpoint = 'https://api.github.com/users/TheJackForge'; //Mocking with gh api
   try {
     const response = await axios.get(endpoint);
     const followersData = response.data.followers;
 
     //store the followers count on the db
     const social = await Socials.create({
-      socialName: "instagram",
+      socialName: "hashnode",
       followers: followersData
     })
     return res.status(201).json(social);
@@ -112,16 +112,16 @@ exports.getInstagram = async (req, res) => {
   }
 }
 
-// Linkedin
-exports.getLinkedin = async (req, res) => {
-  const endpoint = 'https://api.github.com/users/TheJackForge'; //Mocking with gh api
+// Instagram
+exports.getInstagram = async (req, res) => {
+  const endpoint = 'https://api.github.com/users/suhailkakar'; //Mocking with gh api
   try {
     const response = await axios.get(endpoint);
     const followersData = response.data.followers;
 
     //store the followers count on the db
     const social = await Socials.create({
-      socialName: "linkedin",
+      socialName: "instagram",
       followers: followersData
     })
     return res.status(201).json(social);

@@ -48,9 +48,10 @@ log with admin/admin
 ```
 
 # Important:
-add a .env file in `js` folder with the following content:
+add a .env file in the root folder with the following content, copying the content of the .env.example:
 ```
-TWITTER_API_TOKEN=<your api bearer token>
+TWITTER_API_TOKEN=<your twitter api token>
+YOUTUBE_API_TOKEN=<your youtube api token>
 ```
 
 # Social Dashboard

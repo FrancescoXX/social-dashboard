@@ -1,7 +1,6 @@
 const express = require('express');
 const Socials = require('./models/socials.model');
 const sequelize = require('./util/database');
-const cron = require('node-cron');
 
 const app = express();
 
@@ -17,6 +16,6 @@ app.use('/socials', require('./routes/socials.routes'));
 
 
 sequelize
-  .sync({ force: true })
+  .sync({ force: false })
   .then(() => app.listen(process.env.EXTERNALPORT))
   .catch((error) => console.log(error));

@@ -12,7 +12,7 @@ services:
 
   nodeapp:
     container_name: nodeapp
-    image: social-dashboard-nodeapp:1.0.0
+    image: francescoxx/social-dashboard:nodeapp-0.0.2
     build:
       context: js
     ports:

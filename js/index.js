@@ -1,6 +1,7 @@
 const express = require('express');
 const Socials = require('./models/socials.model');
 const sequelize = require('./util/database');
+const cron = require('node-cron');
 
 const app = express();
 

@@ -1,4 +1,6 @@
-#Social Dashboard
+# Social Dashboard
+
+A tool to visualize your Social Media Stats
 
 # TWITCH LIVESTREAM:
 

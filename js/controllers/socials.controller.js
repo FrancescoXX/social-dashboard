@@ -186,8 +186,6 @@ const getTwitchUpdate = async () => {
 
     axios(config)
       .then(async function (response) {
-        // const responseData = response.data;
-
         // store the Twitch followers count on the db
         const followersData = response.data.total;
         await updateSocialService(followersData, 'twitch');

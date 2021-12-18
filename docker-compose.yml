@@ -12,7 +12,7 @@ services:
 
   nodeapp:
     container_name: nodeapp
-    image: francescoxx/social-dashboard:nodeapp-0.0.2
+    image: social-dashboard:nodeapp
     build:
       context: js
     ports:
@@ -23,12 +23,12 @@ services:
       - PGUSER=postgres
       - PGPASSWORD=postgres
       - PGHOST=db
-      - GITHUB_USERNAME=FrancescoXX
-      - TWITTER_USERNAME=FrancescoCiull4
-      - HASHNODE_USERNAME=FrancescoCiulla
-      - INSTAGRAM_USERNAME=francescociullaroma
-      - YOUTUBE_CHANNEL_ID=UCBRxDSTfr2aJVODDh4WG_7g
-      - TWITCH_USER_ID=467501393
+      - GITHUB_USERNAME=
+      - TWITTER_USERNAME=
+      - HASHNODE_USERNAME=
+      - INSTAGRAM_USERNAME=
+      - YOUTUBE_CHANNEL_ID=
+      - TWITCH_USER_ID=
     env_file:
       - .env 
 
